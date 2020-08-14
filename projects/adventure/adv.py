@@ -64,6 +64,23 @@ def dungeon_search(starting_room):
         # add it to path
         # getting stuck in endless loops might be a k,v problem
 
+    
+        if len(directions) > 0:
+            direction = random.sample(directions, 1)
+            path.append(direction[0])
+            player.travel(direction[0])
+            s.push(direction[0])
+        # if you reach a dead end go the opposite direction 
+        else:
+            turn_around = s.pop()
+            player.travel(opposites[turn_around])
+            path.append(opposites[turn_around])
+    
+    #thank god
+    return path
+
+
+
 
 
 
